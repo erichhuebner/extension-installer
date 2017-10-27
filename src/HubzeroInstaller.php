@@ -28,7 +28,7 @@ class HubzeroInstaller extends LibraryInstaller
 				break;
 			case "hubzero-template":
 				$directory = "templates";
-				$prefix = "";
+				$prefix = "tmp_";
 				break;
 		}
 		// Get the composer package name (returns in vendor/package format)
@@ -38,10 +38,10 @@ class HubzeroInstaller extends LibraryInstaller
 		$pieces = explode("/", $name);
 		$packagename = end($pieces);
 		
-		// Prefix the package name (is this still needed for anything?)
-		if (substr($packagename, 0, strlen($prefix)) != $prefix)
+		// Strip the prefix
+		if (substr($packagename, 0, strlen($prefix)) == $prefix)
 		{
-			$packagename = $prefix . $packagename;
+			$packagename = substr($packagename, strlen($prefix), strlen($packagename));
 		}
 		return $directory . "/" . $packagename;
 	}
