@@ -12,6 +12,12 @@ class HubzeroInstaller extends LibraryInstaller
 	 */
 	public function getInstallPath(PackageInterface $package)
 	{
+		// Check for an override and use it
+		$extras = $package->getExtra();
+		if (isset($extras['install-directory']))
+		{
+			return ltrim($extras['install-directory'], '/');
+		}
 		switch ($package->getType())
 		{
 			case "hubzero-component":
