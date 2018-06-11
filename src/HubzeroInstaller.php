@@ -34,7 +34,7 @@ class HubzeroInstaller extends LibraryInstaller
 				break;
 			case "hubzero-template":
 				$directory = "templates";
-				$prefix = "tmp_";
+				$prefix = "tpl_";
 				break;
 		}
 		// Get the composer package name (returns in vendor/package format)
